@@ -1,12 +1,23 @@
 package com.shopping.frontend;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.shopping.models.Product;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import com.shopping.models.Product;
 
 public class ShoppingFrame extends JFrame {
     private JPanel mainPanel;
@@ -29,13 +40,13 @@ public class ShoppingFrame extends JFrame {
 
         mainPanel = new JPanel(new BorderLayout());
         
-        // Product List
+        
         productList = new JList<>(listModel);
         productList.setCellRenderer(new ProductListRenderer());
         JScrollPane scrollPane = new JScrollPane(productList);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Buttons Panel
+        
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         
         addToCartButton = new JButton("Add to Cart");
@@ -48,7 +59,7 @@ public class ShoppingFrame extends JFrame {
 
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        // Add action listeners
+        
         addToCartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,7 +100,7 @@ public class ShoppingFrame extends JFrame {
     }
 
     private void initializeProducts() {
-        // Add some sample products
+    
         listModel.addElement(new Product(1, "Laptop", "High-performance laptop", 999.99, 10, "Electronics"));
         listModel.addElement(new Product(2, "Smartphone", "Latest smartphone model", 699.99, 15, "Electronics"));
         listModel.addElement(new Product(3, "Headphones", "Wireless noise-cancelling headphones", 199.99, 20, "Electronics"));
@@ -118,7 +129,7 @@ public class ShoppingFrame extends JFrame {
         JOptionPane.showMessageDialog(this, cartContent.toString());
     }
 
-    // Custom renderer for the product list
+   
     private class ProductListRenderer extends DefaultListCellRenderer {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
@@ -134,4 +145,4 @@ public class ShoppingFrame extends JFrame {
             return this;
         }
     }
-}
+} 
