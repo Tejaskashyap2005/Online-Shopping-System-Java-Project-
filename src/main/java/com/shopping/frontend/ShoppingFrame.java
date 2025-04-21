@@ -108,13 +108,13 @@ public class ShoppingFrame extends JFrame {
 
         for (Product product : cart) {
             cartContent.append(product.getName())
-                      .append(" - $")
+                      .append(" - ₹")
                       .append(String.format("%.2f", product.getPrice()))
                       .append("\n");
             total += product.getPrice();
         }
 
-        cartContent.append("\nTotal: $").append(String.format("%.2f", total));
+        cartContent.append("\nTotal: ₹").append(String.format("%.2f", total));
         JOptionPane.showMessageDialog(this, cartContent.toString());
     }
 
@@ -126,7 +126,7 @@ public class ShoppingFrame extends JFrame {
             super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
             if (value instanceof Product) {
                 Product product = (Product) value;
-                setText(String.format("%s - $%.2f (%s)", 
+                setText(String.format("%s - ₹%.2f (%s)", 
                     product.getName(), 
                     product.getPrice(),
                     product.getCategory()));
@@ -134,4 +134,4 @@ public class ShoppingFrame extends JFrame {
             return this;
         }
     }
-} 
+}
